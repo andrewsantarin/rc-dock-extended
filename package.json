@@ -1,0 +1,41 @@
+{
+  "name": "rc-dock-extended",
+  "version": "0.1.0-alpha.1",
+  "description": "Additional features on top of the rc-dock library",
+  "keywords": [
+    "react",
+    "layout",
+    "dock",
+    "panel",
+    "tabs",
+    "drag-and-drop",
+    "float",
+    "window",
+    "drag",
+    "drop",
+    "reactjs",
+    "react-dom",
+    "rc-dock",
+    "extension",
+    "enhancement",
+    "new-window"
+  ],
+  "license": "Apache-2.0",
+  "author": {
+    "name": "Cezar Andrew Villegas Santarin",
+    "email": "andrew.santarin@gmail.com",
+    "url": "https://linkedin.com/in/andrewsantarin"
+  },
+  "bugs": {
+    "url": "https://github.com/andrewsantarin/rc-dock-extended/issues"
+  },
+  "homepage": "https://github.com/andrewsantarin/rc-dock-extended#readme",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andrewsantarin/rc-dock-extended.git"
+  }
+}
