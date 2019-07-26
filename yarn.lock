@@ -4908,16 +4908,14 @@ randomfill@^1.0.3:
     randombytes "^2.0.5"
     safe-buffer "^5.1.0"
 
-rc-dock@^2.3.7:
-  version "2.3.7"
-  resolved "https://registry.yarnpkg.com/rc-dock/-/rc-dock-2.3.7.tgz#609d21c8878e68c7469bd45596097ce89219a545"
-  integrity sha512-8i/3uIrfUO3SJ0fXqvXOhxsSZg8UM2RXz16SSc3pxRU+bnlcFdxd6nZuCCKtmuPEoK3KpPGQ4ynBgIg0ow95wA==
+rc-dock@^2.3.8:
+  version "2.3.8"
+  resolved "https://registry.yarnpkg.com/rc-dock/-/rc-dock-2.3.8.tgz#a9949fa95fb0b09e37a82caf9208f058348204fd"
+  integrity sha512-eUJgRGwbA6x5EUM67tR/5BNM0wOMRwKzOW4tc0H6RowB8NF8kYujkW9TSNE7yvkJBDd/7XeGOLT6uxY8Ek1KeQ==
   dependencies:
     classnames "^2.2.6"
-    lodash "^4.17.11"
+    lodash "^4.17.15"
     rc-tabs "^9.6.4"
-    react "^16.8.6"
-    react-dom "^16.8.6"
 
 rc-hammerjs@~0.6.0:
   version "0.6.9"
