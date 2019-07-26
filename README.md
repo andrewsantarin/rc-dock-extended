@@ -12,6 +12,7 @@ export default function App() {
 }
 ```
 
+**Table of Contents**
 - [Core features](#core-features)
 - [Key differences](#key-differences)
 - [Installation](#installation)
