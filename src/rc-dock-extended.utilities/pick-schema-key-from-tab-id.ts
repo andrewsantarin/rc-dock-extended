@@ -1,5 +1,5 @@
 /**
- * Select the schema `key` segment from a tab `id` sequence.
+ * Selects the schema `key` segment from a tab `id` sequence.
  * 
  * @param {string} [id] (optional) A box identifier. If omitted, the function generates an empty string.
  * @param {string} [idKeyDelimiter] (optional) A character which separates the key and id.

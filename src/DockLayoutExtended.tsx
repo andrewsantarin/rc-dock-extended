@@ -1,6 +1,6 @@
 import React, { Component, createRef, createContext } from 'react';
 import { AutoControlledManager, AutoControlled } from 'react-auto-controlled';
-import { DockLayout, LayoutBase, LayoutData, TabData, PanelBase, PanelData } from 'rc-dock';
+import { DockLayout, LayoutBase, LayoutData, TabData, PanelData } from 'rc-dock';
 import { addTabToPanel } from 'rc-dock/lib/Algorithm';
 import { loadLayoutData } from 'rc-dock/lib/Serializer';
 
@@ -23,6 +23,7 @@ import {
   createLayoutBase,
   createTabData,
   findFirstDeepestPanel,
+  findFirstDeepestPanelWithTabs,
   findTabParentPanel,
   pickDataFromSchema,
   pickSchemaKeyFromTabId
@@ -154,13 +155,15 @@ export class DockLayoutExtended
 
   componentDidMount() {
     safeInvokeWithRef(this.dockLayout, (dockLayout) => {
-      dockLayout._ref.addEventListener('click', this.handleLayoutClick);
+      // TODO: Figure out how to make sure this works for tablets, too, using 'touchstart'. See rc-dock/lib/dragdrop/DragManager.ts.
+      dockLayout._ref.addEventListener('mouseup', this.handleLayoutMouseDown);
     });
   }
 
   componentWillUnmount() {
     safeInvokeWithRef(this.dockLayout, (dockLayout) => {
-      dockLayout._ref.removeEventListener('click', this.handleLayoutClick);
+      // TODO: Figure out how to make sure this works for tablets, too, using 'touchstart'. See rc-dock/lib/dragdrop/DragManager.ts.
+      dockLayout._ref.removeEventListener('mouseup', this.handleLayoutMouseDown);
     });
   }
 
@@ -269,14 +272,13 @@ export class DockLayoutExtended
   private handleLayoutChange = (newLayout: LayoutBase, currentTabId: string | null) => {
     let activePanelId: string;
 
-    // FIXME: This part is highly unpredictable. I don't know why, but rc-dock generates ids which are way off.
+    // NOTE: As long as nobody uses `'+0'` as value of any panel id, this algorithm should generally be safe.
     if (currentTabId === null) {
-      const { dockbox } = newLayout;
-      const deepestPanel = findFirstDeepestPanel(dockbox) as PanelBase;
-      activePanelId = deepestPanel.id!;
+      const maybeDeepestPanel = findFirstDeepestPanelWithTabs(newLayout);
+      activePanelId = maybeDeepestPanel && maybeDeepestPanel.id ? maybeDeepestPanel.id : '';
     } else {
-      const currentTabPanel = findTabParentPanel(newLayout, currentTabId) || {} as PanelBase;
-      activePanelId = currentTabPanel.id || this.state.activePanelId;
+      const maybeDeepestPanel = findTabParentPanel(newLayout, currentTabId);
+      activePanelId = maybeDeepestPanel && maybeDeepestPanel.id ? maybeDeepestPanel.id : this.state.activePanelId;
     }
 
     this.trySetState({
@@ -287,7 +289,7 @@ export class DockLayoutExtended
     safeInvoke(this.props.onLayoutChange, newLayout, currentTabId, activePanelId);
   }
 
-  private handleLayoutClick = (event: MouseEvent) => {
+  private handleLayoutMouseDown = (event: MouseEvent) => {
     safeInvokeWithRef(this.dockLayout, (dockLayout) => {
       let target = event.target;
       if (!target) {

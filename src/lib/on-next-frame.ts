@@ -3,7 +3,7 @@
  * 
  * @see https://stackoverflow.com/a/34999925/11455106
  *
- * @param {FrameRequestCallback} callback The functon 
+ * @param {FrameRequestCallback} callback The functon to invoke.
  * @param {number} [ms] (optional) Additional delays, where applicable.
  */
 export const onNextFrame = (callback: FrameRequestCallback, ms?: number) => {

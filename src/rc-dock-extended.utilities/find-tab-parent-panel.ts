@@ -5,12 +5,10 @@ import { PanelBase, BoxBase, LayoutBase } from 'rc-dock';
 /**
  * Searches a given panel for a tab whose parent is the given panel.
  *
- * @export
+ * @param {PanelBase} panel The given panel.
+ * @param {string} tabId The id of the tab to search for.
  *
- * @param {PanelBase} panel The given panel
- * @param {string} tabId The id of the tab to search for
- *
- * @returns {(PanelBase | undefined)} The given panel, if found, else `undefined`
+ * @returns {(PanelBase | undefined)} The given panel, if found, else `undefined`.
  */
 const findParentPanelFromTab = (panel: PanelBase, tabId: string): PanelBase | undefined => {
   for (const tab of panel.tabs) {
@@ -24,10 +22,10 @@ const findParentPanelFromTab = (panel: PanelBase, tabId: string): PanelBase | un
 /**
  * (recursive) Searches the entire layout box for the parent panel of a tab node.
  *
- * @param {BoxBase} box The layout box to search in
- * @param {string} tabId The id of the tab to search for
+ * @param {BoxBase} box The layout box to search in.
+ * @param {string} tabId The id of the tab to search for.
  *
- * @returns {(PanelBase | undefined)} The tab node's parent, if found, else `undefined`
+ * @returns {(PanelBase | undefined)} The tab node's parent, if found, else `undefined`.
  */
 export const findTabParentPanelInBox = (box: BoxBase, tabId: string): PanelBase | undefined => {
   let result;
@@ -49,8 +47,6 @@ export const findTabParentPanelInBox = (box: BoxBase, tabId: string): PanelBase 
 
 /**
  * Searches the entire layout tree for the parent panel of a tab node.
- *
- * @export
  *
  * @param {LayoutBase} layout The dock & float component hierarchy
  * @param {string} tabId The id of the tab to search for

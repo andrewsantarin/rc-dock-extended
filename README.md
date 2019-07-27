@@ -171,11 +171,11 @@ const App: FunctionComponent = () => {
         defaultActivePanelId={`${LAYOUT_ID_PREFIX}${0}`}
         defaultLayout={{
           dockbox: {
-            id: `${LAYOUT_ID_PREFIX}${1}`,
+            id: `${LAYOUT_ID_PREFIX}${1}`, // +1
             mode: 'horizontal',
             children: [
               {
-                id: `${LAYOUT_ID_PREFIX}${0}`,
+                id: `${LAYOUT_ID_PREFIX}${3}`, // +3
                 activeId: `${FIRST}${LAYOUT_TAB_DATA_SCHEMA_ID_PREFIX}${2}`, // 'FIRST#2'
                 tabs: [
                   {
@@ -198,7 +198,7 @@ const App: FunctionComponent = () => {
             ],
           },
           floatbox: {
-            id: `${LAYOUT_ID_PREFIX}${2}`,
+            id: `${LAYOUT_ID_PREFIX}${2}`, // +2
             mode: 'float',
             children: [
             ],

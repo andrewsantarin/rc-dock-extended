@@ -6,10 +6,10 @@ import { Lookup, TabDataOptions } from '../rc-dock-extended.types';
 /**
  * Enhance tab data schema with additional generic attribute options.
  *
- * @param {Lookup<TabData>} tabDataSchema Tab data lookup schema
- * @param {TabDataOptions} options Attributes to apply to all tab base objects
+ * @param {Lookup<TabData>} tabDataSchema Tab data lookup schema.
+ * @param {TabDataOptions} options Attributes to apply to all tab base objects.
  *
- * @returns {Lookup<TabData>} A new tab data schema object with the additional attributes
+ * @returns {Lookup<TabData>} A new tab data schema object with the additional attributes.
  */
 export const enhanceTabDataSchema = (
   tabDataSchema: Lookup<TabData>,

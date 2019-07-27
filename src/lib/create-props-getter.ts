@@ -1,7 +1,6 @@
 /**
- * Builds a props retrieval function which includes the default
+ * Builds a props retrieval function which includes the default props.
  *
- * @export
  * @template DefaultProps
  * @param {DefaultProps} defaultProps
  * @returns
