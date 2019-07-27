@@ -273,7 +273,10 @@ export class DockLayoutExtended
     let activePanelId: string;
 
     // NOTE: As long as nobody uses `'+0'` as value of any panel id, this algorithm should generally be safe.
-    if (currentTabId === null) {
+    if (this.mouseDownLastPanelId === this.state.activePanelId && isNullOrUndefined(currentTabId)) {
+      this.mouseDownLastPanelId = '';
+      activePanelId = this.state.activePanelId;
+    } else if (currentTabId === null) {
       const maybeDeepestPanel = findFirstDeepestPanelWithTabs(newLayout);
       activePanelId = maybeDeepestPanel && maybeDeepestPanel.id ? maybeDeepestPanel.id : '';
     } else {
@@ -289,6 +292,8 @@ export class DockLayoutExtended
     safeInvoke(this.props.onLayoutChange, newLayout, currentTabId, activePanelId);
   }
 
+  // HACK: Memorize the `panel.id` of the last resize drag handle event so that will be the next `activePanelId`.
+  private mouseDownLastPanelId: string = '';
   private handleLayoutMouseDown = (event: MouseEvent) => {
     safeInvokeWithRef(this.dockLayout, (dockLayout) => {
       let target = event.target;
@@ -306,6 +311,8 @@ export class DockLayoutExtended
 
       const panelElement = target as PanelElement;
       const panelId = panelElement.dataset.dockid;
+
+      this.mouseDownLastPanelId = panelId || '';
 
       this.trySetState({
         activePanelId: panelId,
