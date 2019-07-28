@@ -1,4 +1,4 @@
-import React, { Component, createRef, createContext } from 'react';
+import React, { Component, createRef } from 'react';
 import { AutoControlledManager, AutoControlled } from 'react-auto-controlled';
 import { DockLayout, LayoutBase, LayoutData, TabData, PanelData } from 'rc-dock';
 import { addTabToPanel } from 'rc-dock/lib/Algorithm';
@@ -138,8 +138,6 @@ export const dockLayoutExtendedDefaultProps: Readonly<DockLayoutExtendedDefaultP
 
 export const getDockLayoutExtendedProps = createPropsGetter(dockLayoutExtendedDefaultProps);
 // #endregion
-
-export const PanelActivityContext = createContext<string>('');
 
 export class DockLayoutExtended
   extends Component<DockLayoutExtendedProps, DockLayoutExtendedState>
